@@ -2,9 +2,10 @@ import numpy as np
 
 class Level:
 
-    def __init__(self, maxWidth, maxHeight):
+    def __init__(self, maxWidth: int, maxHeight: int, nbEnnemies: int):
         self.maxWidth = maxWidth
         self.maxHeight = maxHeight
+        self.nbEnnemies = nbEnnemies
         self.level = self.generate()
 
     def __str__(self):
@@ -16,13 +17,17 @@ class Level:
         - Remplis 20 fois cette liste avec un nombre aléatoire ``1`` ``(équivalent de → ennemi)`` ou ``0`` `(équivalent de salle vide)`
         - Retourne la liste
         """
-        row = np.random.randint(0, 2, self.maxWidth)
-        level = np.array([row for _ in range(self.maxHeight)])
+        level = np.ones((self.maxWidth, self.maxHeight), dtype=int)
+        level[1:-1, 1:-1] = 0 #Intérieur de la salle vide
+        for _ in range(self.nbEnnemies):
+            level[np.random.randint(1, self.maxWidth)-1:np.random.randint(1, self.maxHeight)-1, np.random.randint(1, self.maxWidth)-1:np.random.randint(1, self.maxHeight)-1] = 4 #Générer des monstres aléatoirement dans la salle
+        level[2, 2] = 8
+
         return level
 
 def main():
     level = Level(20, 20)
-    level.generate()
+    print(level)
 
 if __name__ == "__main__":
     main()
