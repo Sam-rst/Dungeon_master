@@ -2,6 +2,13 @@ from random import randint
 import numpy as np
 
 class Player:
+    keyboard = {
+        "up": "z",
+        "left": "q",
+        "down": "s",
+        "right": "d"
+        }
+
     def __init__(self):
         self.locatedAt = np.array([1, 1])
 
@@ -19,6 +26,11 @@ class Player:
             print("I didn't understood")
         self.locatedAt = newLocation
         return self.locatedAt
+
+    def getDirection(self):
+        """Permet de demander et renvoie en conséquence la direction"""
+        pass
+
 
 # thePlayer = Player()
 
