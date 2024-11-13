@@ -23,7 +23,7 @@ class Player:
     def getDirection(self):
         direction = "none"
         newLocation = self.locatedAt
-        actionInput = input("Action (Z, Q, S, D, ...):")
+        actionInput = input("Action (zqsd, ...):")
         if actionInput in self.keyboard.values() :
             direction = list(self.keyboard.keys())[list(self.keyboard.values()).index(actionInput)]
         else:
@@ -38,7 +38,7 @@ class Player:
             newLocation[0] = newLocation[0]+1
         return newLocation
 
-thePlayer = Player()
-while True:
-    thePlayer.move()
-    print(thePlayer.locatedAt)
+# thePlayer = Player()
+# while True:
+#     thePlayer.move()
+#     print(thePlayer.locatedAt)
